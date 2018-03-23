@@ -183,14 +183,15 @@ def main():
                 print "Fetching Complete."
             else:
                 print "This org, user and repo data already exists!!"
-
+            #reload the dataframe
+            updated_git_df=mm.read_data(FILENAME)
             print "Generate all count!!"
             # check the file generated named: repositories_count.csv
-            mm.get_sorted_list_all_contributors(git_df)
+            mm.get_sorted_list_all_contributors(updated_git_df)
 
             # show the top 10 results
             print "Here is the top 10!!"
-            top_10_repos= mm.get_top_n(10,git_df)
+            top_10_repos= mm.get_top_n(10,updated_git_df)
             for rec in top_10_repos.iterrows():
                 print "Repo: %s" % rec[1]['repo'] +" and it's count= %s" % rec[1]['repo_count']
 
