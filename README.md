@@ -4,12 +4,12 @@
 
 The goal of this challenge is to produce a command-line script that will crawl Github user profiles to produce the following report:
 
-Milestone 1
+## Milestone 1
 Given the full name of a target github repository (e.g. “kubernetes/kubernetes” which refers to https://github.com/kubernetes/kubernetes/),
 fetch all of that project’s contributors, and then fetch each contributor’s repositories (i.e. the repos that they have forked).
 Count how many times each repository appears across all contributors. Then print to stdout a summary of the top 10 repositories by count.
 
-Milestone 2
+## Milestone 2
 Since this crawl might involve pulling accounts for a large number of users, which could take a long time, or eat up our API rate limit,
 we should support saving the contributor / repo data that we need to an on-disk representation,
 and using saved data to resume/replay a scan if possible.
@@ -30,12 +30,12 @@ and using saved data to resume/replay a scan if possible.
         4. Availability
 
 
-#Assumption/Limitation:
+# Assumption/Limitation:
 
 Tried using https://developer.github.com/v3/repos/#list-contributors. however, getting throttled every single time.
 
 Response as below:
-403 {u'documentation_url': u'https://developer.github.com/v3/#rate-limiting', u'message': u"API rate limit exceeded for <ip address>.
+403 {u'documentation_url': u'https://developer.github.com/v3/#rate-limiting', u'message': u"API rate limit exceeded for ..my_ip address..
 (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)"}
 
 Hence, used GitHub Python Client - PyGitHub along with my own personal github token, so as to get the data.
@@ -71,7 +71,7 @@ Time    - C * R times to read and create dataset. where C is # of contributor & 
 
 # How to use:
 
-  cd <path>/github-crawler/crawl_git_data
+  cd ...path../github-crawler/crawl_git_data
 
   Data Crawler
   ------------
@@ -139,22 +139,23 @@ Time    - C * R times to read and create dataset. where C is # of contributor & 
 
 # Final Result:
 
-python data_reader.py
-Enter the path for the target github repository:adamnemecek/zipline
+    python data_reader.py
+    Enter the path for the target github repository:adamnemecek/zipline
 
-This org, user and repo data already exists!!
-Generate all count!!
-Here is the top 10!!
-Repo: kubernetes and it's count= 379
-Repo: kubernetes.github.io and it's count= 168
-Repo: test-infra and it's count= 155
-Repo: contrib and it's count= 118
-Repo: docker and it's count= 99
-Repo: origin and it's count= 81
-Repo: heapster and it's count= 71
-Repo: cadvisor and it's count= 70
-Repo: features and it's count= 67
-Repo: release and it's count= 65
+    This org, user and repo data already exists!!
+    Generate all count!!
+    Here is the top 10!!
+
+    Repo: kubernetes and it's count= 379
+    Repo: kubernetes.github.io and it's count= 168
+    Repo: test-infra and it's count= 155
+    Repo: contrib and it's count= 118
+    Repo: docker and it's count= 99
+    Repo: origin and it's count= 81
+    Repo: heapster and it's count= 71
+    Repo: cadvisor and it's count= 70
+    Repo: features and it's count= 67
+    Repo: release and it's count= 65
 
 
 # References:
