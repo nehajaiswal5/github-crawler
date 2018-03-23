@@ -1,0 +1,7 @@
+python 2.7
+anaconda 2
+PyGithub
+Jupyter Notebook
+Seaborn
+Numpy
+Pandas
